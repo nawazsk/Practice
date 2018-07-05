@@ -33,16 +33,16 @@ const concatTest1= (separator, ...arguments) => arguments.join(separator)
 concatTest1(", ", "Hello Sir", "How are you", "My name is Mike");
 
 //1-4
-  // const myfunc = (...arg, separator)=>arg.join(separator);
-  // const myVal = myfunc(10,20,30,",");
-  // console.log(myVal); //error rest param will be last formal param
+  const myfunc = (...arg, separator)=>arg.join(separator);
+  const myVal = myfunc(10,20,30,",");
+  console.log(myVal); //error rest param will be last formal param
 
 
 //1-5
 
-  // const myfunc = ...arg =>arg.join(",");
-  // const myVal = myfunc(10,20,30);
-  // console.log(myVal); //unexpected token ... , use brackets ()
+  const myfunc = ...arg =>arg.join(",");
+  const myVal = myfunc(10,20,30);
+  console.log(myVal); //unexpected token ... , use brackets ()
 
 
 //1-6 Solve using spread operator Write an arrow function that takes Integer as argument and returns integer in reverseExample: Input –funcReverse(123456);Output –654321
@@ -88,123 +88,121 @@ concatArrays2([1,2,3], [4,5,6],[7,8,9]);
 //2. Destructuring
 
 //2-1
-  // function f() {
-  //   return [2, 5, 6];
-  // }
-  // let a, b;
-  // [a , , b] = f();
-  // console.log(a); //2
-  // console.log(b); //6
+  function f() {
+    return [2, 5, 6];
+  }
+  let a, b;
+  [a , , b] = f();
+  console.log(a); //2
+  console.log(b); //6
 
 
 //2-2
 
-// let obj = { a: 2, b: 4 };
-//
-// let {a, b} = obj;
+let obj = { a: 2, b: 4 };
+
+let {a, b} = obj;
 
 
 //2-3
 
-  // let data = {
-  //   role:"Engineer",
-  //   company:"SR",
-  //   personal: {
-  //     name:"Sumit",
-  //     age:25,
-  //     country:"IND",
-  //     state:undefined,
-  //     spouse: {
-  //       name:"Reena"
-  //     }
-  //   }
-  // }
-  //
-  // let {company="sapient"} = data
-  // let {name, age,country, state="AP"} = data.personal;
-  // let {spouse} = data.personal;
-  //
-  // console.log(spouse);
+  let data = {
+    role:"Engineer",
+    company:"SR",
+    personal: {
+      name:"Sumit",
+      age:25,
+      country:"IND",
+      state:undefined,
+      spouse: {
+        name:"Reena"
+      }
+    }
+  }
+
+  let {company="sapient"} = data
+  let {name, age,country, state="AP"} = data.personal;
+  let {spouse} = data.personal;
+
+  console.log(spouse);
 
 
   //2-4
-  // let arr = [
-  //   {name:"Mike", age :25, role:"Engineer", company:"SR"},
-  //   {name:"Sam", age :27, role:"Senior Engineer", company:"SR"},
-  //   {name:"Peter", age :28, role:"Senior Program Manager", company:"SR"}
-  // ];
-  // let newArray=[];
-  // for(item of arr) {
-  //     const {name, company} = item;
-  //
-  //     newArray.push({name,company});
-  //
-  // }
-  // console.log(newArray);
+  let arr = [
+    {name:"Mike", age :25, role:"Engineer", company:"SR"},
+    {name:"Sam", age :27, role:"Senior Engineer", company:"SR"},
+    {name:"Peter", age :28, role:"Senior Program Manager", company:"SR"}
+  ];
+  let newArray=[];
+  for(item of arr) {
+      const {name, company} = item;
+
+      newArray.push({name,company});
+
+  }
+  console.log(newArray);
 
 
 //2-5
-// let data1 = {
-//   role:"Engineer",
-//   company:"SR",
-//   personal: {
-//     name:"Sumit",
-//     age:25,
-//     country:"IND",
-//     state:undefined,
-//     children:[ {
-//       name:"Mayank"
-//     }]
-//   }
-// }
-//
-// const {children:[{name}]} = data1.personal;
+let data1 = {
+  role:"Engineer",
+  company:"SR",
+  personal: {
+    name:"Sumit",
+    age:25,
+    country:"IND",
+    state:undefined,
+    children:[ {
+      name:"Mayank"
+    }]
+  }
+}
+
+const {children:[{name}]} = data1.personal;
 
 
 
-// console.log(data1.personal.children[0].name);
 
-// const {name} = data1.personal.children[0];
-// console.log(name);
 
 //2-6
 
-// let dobj = {
-//   name: "abc",
-//   age: 13
-// }
-//
-// const DestructureObj = (obj) => {
-//     const{name="test", age=10} = obj;
-//
-//     console.log(name, age);
-// }
-// DestructureObj(dobj);
+let dobj = {
+  name: "abc",
+  age: 13
+}
+
+const DestructureObj = (obj) => {
+    const{name="test", age=10} = obj;
+
+    console.log(name, age);
+}
+DestructureObj(dobj);
 
 //2-7
 
-// let dArray = [ 10, 20];
+let dArray = [ 10, 20,30];
+
+const addition = ([op, ...arr]) => {
+
+  const [val1, val2] = arr;
+  console.log(op);
+  console.log(val1);
+  console.log(val2);
+}
+
+addition(dArray);
 //
-// const addition = (op, ...arr) => {
-//
-//   const [val1, val2] = arr;
-//
-//   console.log(val1);
-//   console.log(val2);
-//
-// }
-//
-// addition("add",dArray);
-//
-// let dObj= {
-//   "first":"abc",
-//   "last":"cdg"
-// }
-//
-// const dStrucObj = (...dObj) => {
-//
-// }
-//
-// dStrucObj(dObj);
+let dObj= {
+  "first":"abc",
+  "last":"cdg",
+  "age":12
+}
+
+const dStrucObj = ({first,...last}) => {
+  console.log(first);
+  console.log(last);
+}
+
+dStrucObj(dObj);
 
 })();
